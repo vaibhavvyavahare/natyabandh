@@ -32,7 +32,7 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${yatraOne.variable} antialiased`}
     >
-      <body className="min-h-screen bg-stone-50 text-stone-900 antialiased pt-16">
+      <body className="min-h-screen bg-black text-white antialiased pt-16">
         <Navbar />
         <main className="flex-grow">
           {children}
