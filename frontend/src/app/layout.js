@@ -22,7 +22,7 @@ export const metadata = {
   title: "Natyabandh",
   description: "The Legacy of Art, The Passion for Theatre!",
   icons: {
-    icon: "/logo.png",
+    icon: "/icon.png",
   },
 };
 
