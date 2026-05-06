@@ -3,11 +3,12 @@ import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 
 const galleryItems = [
-  { id: 1, src: '/photos/mainposter.png', alt: "Natyabandh Main Poster" },
-  { id: 2, src: '/photos/rango_se_pare1.jpg', alt: "Rango Se Pare Poster" },
-  { id: 3, src: '/photos/umaj.jpg', alt: "Umaj Poster" },
-  { id: 4, src: '/photos/rango1.jpg', alt: "Rango Se Pare Action" },
-  { id: 5, src: '/photos/Umaj1.jpg', alt: "Umaj Action" },
+  { id: 1, src: '/photos/vedo.mp4', alt: "Natyabandh Promo Video", type: 'video' },
+  { id: 2, src: '/photos/mainposter.png', alt: "Natyabandh Main Poster", type: 'image' },
+  { id: 3, src: '/photos/rango_se_pare1.jpg', alt: "Rango Se Pare Poster", type: 'image' },
+  { id: 4, src: '/photos/umaj.jpg', alt: "Umaj Poster", type: 'image' },
+  { id: 5, src: '/photos/rango1.jpg', alt: "Rango Se Pare Action", type: 'image' },
+  { id: 6, src: '/photos/Umaj1.jpg', alt: "Umaj Action", type: 'image' },
 ];
 
 export default function LegacySection() {
@@ -114,14 +115,25 @@ export default function LegacySection() {
               key={idx} 
               className="min-w-full h-full flex-shrink-0 snap-center relative flex items-center justify-center p-[11px] bg-stone-950"
             >
-              <div className="relative w-full h-full pointer-events-none">
-                <Image 
-                  src={item.src} 
-                  alt={item.alt} 
-                  fill
-                  className="object-contain drop-shadow-2xl"
-                  unoptimized
-                />
+              <div className="relative w-full h-full pointer-events-none overflow-hidden rounded-2xl">
+                {item.type === 'video' ? (
+                  <video 
+                    src={item.src}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <Image 
+                    src={item.src} 
+                    alt={item.alt} 
+                    fill
+                    className="object-contain drop-shadow-2xl"
+                    unoptimized
+                  />
+                )}
               </div>
             </div>
           ))}
