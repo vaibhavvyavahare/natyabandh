@@ -14,9 +14,10 @@ const galleryItems = [
 export default function LegacySection() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [progress, setProgress] = useState(0);
+  const [isMuted, setIsMuted] = useState(true);
   const scrollContainerRef = useRef(null);
   const progressIntervalRef = useRef(null);
-  const isScrollingRef = useRef(false);
+  const videoRef = useRef(null);
 
   const SLIDE_DURATION = 3500;
 
@@ -28,7 +29,6 @@ export default function LegacySection() {
       left: index * slideWidth,
       behavior: 'smooth'
     });
-    // State will be updated by handleScroll
   };
 
   const nextSlide = () => {
@@ -44,21 +44,28 @@ export default function LegacySection() {
   const handleScroll = () => {
     if (!scrollContainerRef.current) return;
     const container = scrollContainerRef.current;
-    
-    // Calculate precise index during scroll
     const slideWidth = container.offsetWidth;
     const scrollLeft = container.scrollLeft;
     const newIndex = Math.round(scrollLeft / slideWidth);
     
     if (newIndex !== currentSlide) {
       setCurrentSlide(newIndex);
-      setProgress(0); // Reset progress immediately on slide change
+      setProgress(0);
     }
   };
 
   // Progress Bar Animation
   useEffect(() => {
     if (progressIntervalRef.current) clearInterval(progressIntervalRef.current);
+
+    const currentItem = galleryItems[currentSlide];
+    
+    // If it's a video, the video element handles progress via onTimeUpdate
+    if (currentItem.type === 'video') {
+      return () => {
+        if (progressIntervalRef.current) clearInterval(progressIntervalRef.current);
+      };
+    }
 
     const step = 100 / (SLIDE_DURATION / 50);
     progressIntervalRef.current = setInterval(() => {
@@ -76,12 +83,35 @@ export default function LegacySection() {
     };
   }, [currentSlide]);
 
+  const handleVideoTimeUpdate = () => {
+    if (videoRef.current) {
+      const percentage = (videoRef.current.currentTime / videoRef.current.duration) * 100;
+      setProgress(percentage);
+    }
+  };
+
+  const handleVideoEnded = () => {
+    nextSlide();
+  };
+
   return (
     <section className="min-h-screen bg-black text-white font-sans pt-20 pb-12 px-4 sm:px-6 md:px-12 lg:px-24">
       
       {/* 9:16 Portrait Slider */}
       <div className="max-w-xs mx-auto mb-6 relative group rounded-3xl shadow-[0_0_60px_rgba(220,38,38,0.4)] border-4 border-stone-800 bg-stone-950 aspect-[9/16]">
         
+        {/* Mute/Unmute Toggle */}
+        <button 
+          onClick={() => setIsMuted(!isMuted)}
+          className="absolute top-16 right-4 z-[60] bg-black/40 backdrop-blur-md p-2 rounded-full border border-white/10 hover:bg-white/20 transition-all text-white"
+        >
+          {isMuted ? (
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+          ) : (
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          )}
+        </button>
+
         {/* Navigation Buttons */}
         <div className="absolute inset-y-0 left-0 w-10 flex items-center justify-center z-[50] pointer-events-none">
            <button 
@@ -118,11 +148,13 @@ export default function LegacySection() {
               <div className="relative w-full h-full pointer-events-none overflow-hidden rounded-2xl">
                 {item.type === 'video' ? (
                   <video 
+                    ref={currentSlide === idx ? videoRef : null}
                     src={item.src}
                     autoPlay
-                    muted
-                    loop
+                    muted={isMuted}
                     playsInline
+                    onTimeUpdate={currentSlide === idx ? handleVideoTimeUpdate : null}
+                    onEnded={currentSlide === idx ? handleVideoEnded : null}
                     className="w-full h-full object-cover"
                   />
                 ) : (
