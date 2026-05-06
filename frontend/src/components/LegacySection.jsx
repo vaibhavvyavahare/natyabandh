@@ -83,6 +83,16 @@ export default function LegacySection() {
     };
   }, [currentSlide]);
 
+  // Restart video when returning to the slide
+  useEffect(() => {
+    if (galleryItems[currentSlide].type === 'video' && videoRef.current) {
+      videoRef.current.currentTime = 0;
+      videoRef.current.play().catch(() => {
+        // Fallback for browser autoplay policies
+      });
+    }
+  }, [currentSlide]);
+
   const handleVideoTimeUpdate = () => {
     if (videoRef.current) {
       const percentage = (videoRef.current.currentTime / videoRef.current.duration) * 100;
@@ -145,7 +155,7 @@ export default function LegacySection() {
               key={idx} 
               className="min-w-full h-full flex-shrink-0 snap-center relative flex items-center justify-center p-[11px] bg-stone-950"
             >
-              <div className="relative w-full h-full pointer-events-none overflow-hidden rounded-2xl">
+              <div className="relative w-full h-full pointer-events-none overflow-hidden rounded-2xl flex items-center justify-center">
                 {item.type === 'video' ? (
                   <video 
                     ref={currentSlide === idx ? videoRef : null}
@@ -155,7 +165,7 @@ export default function LegacySection() {
                     playsInline
                     onTimeUpdate={currentSlide === idx ? handleVideoTimeUpdate : null}
                     onEnded={currentSlide === idx ? handleVideoEnded : null}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain"
                   />
                 ) : (
                   <Image 
