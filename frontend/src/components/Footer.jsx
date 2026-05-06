@@ -8,6 +8,10 @@ export default function Footer() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!supabase) {
+      alert("Database connection not configured. Please check environment variables.");
+      return;
+    }
     setIsSending(true);
 
     try {

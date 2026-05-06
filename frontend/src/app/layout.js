@@ -30,11 +30,13 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${yatraOne.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${yatraOne.variable} antialiased`}
     >
-      <body className="min-h-full flex flex-col pt-16 bg-stone-50 text-stone-900">
+      <body className="min-h-screen bg-stone-50 text-stone-900 antialiased pt-16">
         <Navbar />
-        {children}
+        <main className="flex-grow">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>

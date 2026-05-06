@@ -126,8 +126,6 @@ export default function LegacySection() {
         <div className="flex justify-center w-full min-h-[60px]">
           {/* Exact original Razorpay embed */}
           <div className="razorpay-embed-btn" data-url="https://pages.razorpay.com/pl_Sm4lewjojhLZpg/view" data-text="Book Now" data-color="#752DE1" data-size="large">
-             {/* Fallback link if script fails */}
-             <a href="https://pages.razorpay.com/pl_Sm4lewjojhLZpg/view" className="bg-[#752DE1] text-white px-8 py-3 rounded-lg font-bold uppercase md:hidden shadow-lg">Book Now</a>
           </div>
         </div>
       </div>

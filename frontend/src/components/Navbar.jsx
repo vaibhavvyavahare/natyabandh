@@ -43,8 +43,7 @@ export default function Navbar() {
               data-color="#752DE1" 
               data-size="small"
             >
-              {/* Fallback link if script fails */}
-              <a href="https://pages.razorpay.com/pl_Sm4lewjojhLZpg/view" className="text-xs bg-[#752DE1] text-white px-3 py-1.5 rounded font-bold uppercase md:hidden">Book</a>
+              <a href="https://pages.razorpay.com/pl_Sm4lewjojhLZpg/view" className="text-xs bg-[#752DE1] text-white px-4 py-2 rounded-full font-bold uppercase shadow-sm hover:shadow-md transition-shadow">Book Now</a>
             </div>
           </div>
 
