@@ -30,23 +30,23 @@ export async function POST(req) {
 
     // 2. Send Email via Resend
     const { data, error: emailError } = await resend.emails.send({
-      from: 'Natyabandh <system@natyabandh.me>',
+      from: 'Natyabandh Contact Form <system@natyabandh.me>',
       to: 'natyabandh.rangbhumi@gmail.com',
       reply_to: email,
-      subject: `New Message from ${name} 🎭`,
+      subject: `New Website Message from ${name} 🎭`,
       html: `
-        <div style="font-family: sans-serif; padding: 20px; border: 1px solid #eee; border-radius: 10px; max-width: 600px;">
-          <h2 style="color: #dc2626; border-bottom: 2px solid #dc2626; padding-bottom: 10px;">नवीन संदेश (New Message)</h2>
+        <div style="font-family: sans-serif; padding: 20px; border: 1px solid #eee; border-radius: 10px; max-width: 600px; color: #333;">
+          <h2 style="color: #dc2626; border-bottom: 2px solid #dc2626; padding-bottom: 10px; margin-top: 0;">New Contact Form Submission</h2>
           <div style="margin: 20px 0;">
-            <p><strong>नाव (Name):</strong> ${name}</p>
-            <p><strong>ईमेल (Email):</strong> ${email}</p>
-            <p style="margin-top: 20px;"><strong>संदेश (Message):</strong></p>
-            <div style="background: #f9f9f9; padding: 15px; border-radius: 5px; border-left: 4px solid #dc2626; font-style: italic;">
+            <p style="margin-bottom: 10px;"><strong>Name:</strong> ${name}</p>
+            <p style="margin-bottom: 10px;"><strong>Email:</strong> ${email}</p>
+            <p style="margin-top: 20px; margin-bottom: 5px;"><strong>Message:</strong></p>
+            <div style="background: #f9f9f9; padding: 20px; border-radius: 8px; border-left: 4px solid #dc2626; font-style: italic; line-height: 1.5;">
               ${message}
             </div>
           </div>
           <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;" />
-          <p style="font-size: 12px; color: #666; text-align: center;">Sent from Natyabandh Website Contact Form</p>
+          <p style="font-size: 12px; color: #999; text-align: center; margin-bottom: 0;">This is an automated notification from the Natyabandh website.</p>
         </div>
       `,
     });
