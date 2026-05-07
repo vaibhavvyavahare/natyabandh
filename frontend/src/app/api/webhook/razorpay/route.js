@@ -44,6 +44,7 @@ export async function POST(req) {
           subject: 'तुमची तिकीटं निश्चित झाली आहेत! 🎭 - Natyabandh 2026',
           html: `
             <div style="font-family: 'Helvetica', sans-serif; max-width: 600px; margin: auto; border: 1px solid #eee; padding: 20px; border-radius: 10px;">
+              <img src="https://natyabandh.me/logo.png" width="100" style="display: block; margin: 0 auto 15px auto;" alt="Natyabandh Logo" />
               <div style="background-color: #4A0404; color: white; padding: 15px; text-align: center; border-radius: 5px;">
                 <h1>नाट्यबंध २०२६</h1>
               </div>
