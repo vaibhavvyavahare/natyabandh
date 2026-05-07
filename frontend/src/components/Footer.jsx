@@ -49,6 +49,23 @@ export default function Footer() {
         console.error('Supabase Error:', error);
         setStatus({ type: 'error', message: `त्रुटी (Error): ${error.message}` });
       } else {
+        // Call the Edge Function manually to ensure the email gets sent 
+        // even if the Database Webhook trigger is not configured.
+        try {
+          console.log("Invoking edge function to send email...");
+          await supabase.functions.invoke('forward-message', {
+            body: { 
+              record: { 
+                Name: formData.name, 
+                Email: formData.email, 
+                Msg: formData.message 
+              } 
+            }
+          });
+        } catch (fnErr) {
+          console.error("Edge function error:", fnErr);
+        }
+
         console.log("Success! Message sent.");
         setStatus({ type: 'success', message: 'तुमचा संदेश यशस्वीरीत्या पाठवला आहे! (Message sent!)' });
         setFormData({ name: '', email: '', message: '' });
