@@ -114,15 +114,15 @@ export async function POST(req) {
             },
             body: JSON.stringify({
               data: [
-                {
-                  timestamp: new Date().toLocaleString(),
-                  name: customerName,
-                  email: customerEmail,
-                  phone: customerPhone,
-                  paymentId: payment.id,
-                  amount: payment.amount / 100,
-                  status: 'Paid'
-                }
+                  {
+                    Timestamp: new Date().toLocaleString(),
+                    Name: customerName,
+                    Email: customerEmail,
+                    Phone: customerPhone,
+                    "Payment ID": payment.id,
+                    Amount: payment.amount / 100,
+                    Status: 'Paid'
+                  }
               ]
             })
           }).catch(err => console.error("Google Sheet Sync Error:", err))

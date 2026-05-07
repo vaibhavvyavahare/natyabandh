@@ -29,8 +29,6 @@ export async function POST(req) {
     }
 
     // 2. Send Email via Resend
-    // We try sending from system@natyabandh.me first. 
-    // If that fails (due to domain not verified), we'll know in the logs.
     const { data, error: emailError } = await resend.emails.send({
       from: 'Natyabandh <system@natyabandh.me>',
       to: 'natyabandh.rangbhumi@gmail.com',
