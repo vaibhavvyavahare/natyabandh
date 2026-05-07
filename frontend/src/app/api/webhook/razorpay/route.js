@@ -44,73 +44,79 @@ export async function POST(req) {
           reply_to: 'natyabandh.rangbhumi@gmail.com',
           subject: 'तुमची तिकीटं निश्चित झाली आहेत! 🎭 - Natyabandh 2026',
           html: `
-            <div style="background-color: #000000; padding: 40px 10px; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #ffffff; text-align: center;">
-              <!-- Main Cinematic Container -->
-              <div style="width: 100%; max-width: 480px; margin: 0 auto; background: #0a0a0a; border: 1px solid #333; border-radius: 24px; overflow: hidden; box-shadow: 0 40px 100px rgba(0,0,0,0.9); position: relative;">
+            <!-- Import Yatra One from Google Fonts -->
+            <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+            
+            <div style="background-color: #000000; padding: 40px 10px; font-family: 'Inter', system-ui, sans-serif; color: #ffffff; text-align: center;">
+              <!-- Midnight Container -->
+              <div style="width: 100%; max-width: 460px; margin: 0 auto; background: #020617; border: 1px solid #1e293b; border-radius: 28px; overflow: hidden; box-shadow: 0 40px 120px rgba(117, 45, 225, 0.15); position: relative;">
                 
-                <!-- Dynamic Background Glows -->
-                <div style="position: absolute; top: -100px; left: -100px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%); pointer-events: none;"></div>
-                <div style="position: absolute; bottom: -50px; right: -50px; width: 250px; height: 250px; background: radial-gradient(circle, rgba(225, 29, 72, 0.1) 0%, transparent 70%); pointer-events: none;"></div>
+                <!-- Midnight Glows -->
+                <div style="position: absolute; top: -150px; left: -150px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(117, 45, 225, 0.12) 0%, transparent 70%); pointer-events: none;"></div>
+                <div style="position: absolute; bottom: -100px; right: -100px; width: 350px; height: 350px; background: radial-gradient(circle, rgba(220, 38, 38, 0.08) 0%, transparent 70%); pointer-events: none;"></div>
 
-                <!-- Header / Branding -->
-                <div style="padding: 40px 20px 30px; position: relative; z-index: 1;">
-                  <div style="display: inline-block; padding: 4px; background: linear-gradient(45deg, #d4af37, #f9e29c); border-radius: 50%; margin-bottom: 20px; box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);">
-                    <img src="https://natyabandh.me/logo.png" width="80" height="80" style="border-radius: 50%; object-fit: cover; border: 2px solid #000;" alt="Logo" />
+                <!-- Branding -->
+                <div style="padding: 45px 20px 35px; position: relative; z-index: 1;">
+                  <div style="display: inline-block; padding: 3px; background: linear-gradient(135deg, #752DE1, #dc2626); border-radius: 50%; margin-bottom: 25px;">
+                    <img src="https://natyabandh.me/logo.png" width="85" height="85" style="border-radius: 50%; object-fit: cover; border: 3px solid #020617;" alt="Logo" />
                   </div>
-                  <h1 style="margin: 0; font-size: 38px; letter-spacing: 6px; color: #fff; text-transform: uppercase; font-weight: 900; text-shadow: 0 0 15px rgba(255,255,255,0.2);">नाट्यबंध</h1>
-                  <p style="margin: 8px 0 0; color: #d4af37; letter-spacing: 4px; font-size: 11px; text-transform: uppercase; font-weight: bold; opacity: 0.8;">OFFICIAL ENTRY PASS</p>
+                  <h1 style="margin: 0; font-family: 'Yatra One', system-ui; font-size: 48px; color: #ffffff; text-shadow: 0 0 20px rgba(117, 45, 225, 0.4); letter-spacing: 2px;">नाट्यबंध</h1>
+                  <div style="margin: 12px auto; width: 60px; height: 2px; background: #752DE1; border-radius: 2px;"></div>
                 </div>
 
-                <!-- Feature Poster Section -->
-                <div style="padding: 0 30px 40px; position: relative; z-index: 1;">
-                  <div style="background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, transparent 100%); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 25px; backdrop-filter: blur(10px);">
-                    <h2 style="margin: 0; font-size: 26px; color: #fff; font-weight: 800; line-height: 1.2;">उमज <span style="color: #e11d48;">आणि</span><br/>रंगों से परे</h2>
-                    <div style="margin: 15px auto; width: 40px; height: 3px; background: #d4af37; border-radius: 2px;"></div>
-                    <p style="margin: 0; color: rgba(255,255,255,0.6); font-size: 11px; text-transform: uppercase; letter-spacing: 2px;">PRESENTS THE SPECTACLE</p>
+                <!-- Show Title Section -->
+                <div style="padding: 0 35px 40px; position: relative; z-index: 1;">
+                  <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(117, 45, 225, 0.2); border-radius: 20px; padding: 30px 20px; backdrop-filter: blur(12px);">
+                    <p style="margin: 0 0 10px; color: #752DE1; font-size: 10px; font-weight: 900; letter-spacing: 3px; text-transform: uppercase;">NOW SHOWING</p>
+                    <h2 style="margin: 0; font-size: 28px; color: #fff; font-weight: 900; line-height: 1.3;">उमज <span style="color: #dc2626;">आणि</span><br/>रंगों से परे</h2>
                   </div>
                 </div>
 
-                <!-- Ticket Data -->
-                <div style="padding: 0 30px 30px; position: relative; z-index: 1;">
-                  <div style="text-align: left; border-left: 3px solid #d4af37; padding-left: 20px; margin-bottom: 30px;">
-                    <span style="color: rgba(255,255,255,0.4); font-size: 10px; text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 5px;">GUEST</span>
-                    <span style="font-size: 20px; color: #fff; font-weight: bold; letter-spacing: 0.5px;">${customerName}</span>
+                <!-- Attendee Details -->
+                <div style="padding: 0 35px 35px; position: relative; z-index: 1; text-align: left;">
+                  <div style="margin-bottom: 30px;">
+                    <span style="color: rgba(255, 255, 255, 0.4); font-size: 9px; text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 6px;">GUEST OF HONOR</span>
+                    <span style="font-size: 22px; color: #fff; font-weight: 800; letter-spacing: 0.5px;">${customerName}</span>
                   </div>
 
-                  <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background: rgba(255,255,255,0.03); border-radius: 12px; border-collapse: separate;">
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background: rgba(117, 45, 225, 0.05); border-radius: 16px; border-collapse: separate;">
                     <tr>
-                      <td style="padding: 15px; border-right: 1px solid rgba(255,255,255,0.05);">
-                        <span style="color: #d4af37; font-size: 9px; text-transform: uppercase; display: block; margin-bottom: 4px;">DATE</span>
-                        <span style="font-size: 13px; color: #fff; font-weight: bold;">१२ मे, २०२६</span>
+                      <td style="padding: 20px; border-right: 1px solid rgba(255, 255, 255, 0.05);">
+                        <span style="color: #752DE1; font-size: 9px; font-weight: 900; text-transform: uppercase; display: block; margin-bottom: 5px;">DATE</span>
+                        <span style="font-size: 14px; color: #fff; font-weight: 700;">१२ मे, २०२६</span>
                       </td>
-                      <td style="padding: 15px;">
-                        <span style="color: #d4af37; font-size: 9px; text-transform: uppercase; display: block; margin-bottom: 4px;">TIME</span>
-                        <span style="font-size: 13px; color: #fff; font-weight: bold;">सायं. ५:३०</span>
+                      <td style="padding: 20px;">
+                        <span style="color: #752DE1; font-size: 9px; font-weight: 900; text-transform: uppercase; display: block; margin-bottom: 5px;">TIME</span>
+                        <span style="font-size: 14px; color: #fff; font-weight: 700;">सायं. ५:३०</span>
                       </td>
                     </tr>
                   </table>
 
-                  <div style="margin-top: 15px; background: rgba(255,255,255,0.03); border-radius: 12px; padding: 15px; text-align: left;">
-                    <span style="color: #d4af37; font-size: 9px; text-transform: uppercase; display: block; margin-bottom: 4px;">VENUE</span>
-                    <span style="font-size: 13px; color: #fff; font-weight: bold; display: block; line-height: 1.4;">रामकृष्ण मोरे नाट्यगृह, पिंपरी चिंचवड</span>
-                    <div style="margin-top: 8px;">
-                      <a href="https://www.google.com/maps/search/Ramkrishna+More+Natyagruha+Chinchwad" style="color: #fff; font-size: 11px; text-decoration: none; background: #333; padding: 4px 10px; border-radius: 4px; display: inline-block;">Google Map ↗</a>
+                  <div style="margin-top: 15px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 16px; padding: 20px;">
+                    <span style="color: #752DE1; font-size: 9px; font-weight: 900; text-transform: uppercase; display: block; margin-bottom: 5px;">VENUE</span>
+                    <span style="font-size: 14px; color: #fff; font-weight: 700; display: block; line-height: 1.5;">रामकृष्ण मोरे नाट्यगृह, पिंपरी चिंचवड</span>
+                    <div style="margin-top: 12px;">
+                      <a href="https://www.google.com/maps/search/Ramkrishna+More+Natyagruha+Chinchwad" style="color: #ffffff; font-size: 11px; font-weight: 700; text-decoration: none; background: #752DE1; padding: 6px 14px; border-radius: 8px; display: inline-block; box-shadow: 0 4px 12px rgba(117, 45, 225, 0.3);">View Direction ↗</a>
                     </div>
                   </div>
                 </div>
 
-                <!-- Footer Section (Scan Zone) -->
-                <div style="background: #fff; padding: 40px 20px; border-radius: 32px 32px 0 0; margin-top: 10px;">
+                <!-- QR Section (Ticket Stub) -->
+                <div style="background: #ffffff; padding: 45px 25px 35px; border-radius: 35px 35px 0 0; margin-top: 15px; position: relative;">
+                  <!-- Perforation Effect -->
+                  <div style="position: absolute; top: -10px; left: 0; right: 0; text-align: center; font-size: 0;">
+                    <div style="display: inline-block; width: 20px; height: 20px; background: #020617; border-radius: 50%; margin: 0 5px;"></div>
+                  </div>
+
                   <div style="margin-bottom: 25px;">
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${payment.id}&color=000000" width="180" height="180" style="display: block; margin: 0 auto; filter: contrast(1.1);" alt="QR Ticket" />
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${payment.id}&color=020617" width="180" height="180" style="display: block; margin: 0 auto; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.1));" alt="QR Ticket" />
                   </div>
                   
-                  <div style="color: #000; font-family: monospace; font-size: 13px; font-weight: 800; letter-spacing: 1px; margin-bottom: 10px;">
-                    ID: ${payment.id}
+                  <div style="background: #f1f5f9; padding: 10px; border-radius: 10px; display: inline-block; margin-bottom: 15px;">
+                    <span style="color: #020617; font-family: monospace; font-size: 14px; font-weight: 900;">ID: ${payment.id}</span>
                   </div>
                   
-                  <div style="height: 1px; width: 40px; background: #eee; margin: 15px auto;"></div>
-                  <p style="color: #999; margin: 0; font-size: 10px; text-transform: uppercase; letter-spacing: 1px;">Verified Ticket • Natyabandh 2026</p>
+                  <p style="color: #64748b; margin: 0; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Scan at gate for entry • Natyabandh 2026</p>
                 </div>
               </div>
             </div>
