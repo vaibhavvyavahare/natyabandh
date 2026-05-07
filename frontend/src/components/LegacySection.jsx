@@ -5,11 +5,13 @@ import Image from 'next/image';
 const galleryItems = [
   { id: 1, src: '/photos/mainposter.png', alt: "Natyabandh Main Poster", type: 'image' },
   { id: 2, src: '/photos/vedo.mp4', alt: "Natyabandh Promo Video", type: 'video' },
-  { id: 3, src: '/photos/rango_se_pare1.jpg', alt: "Rango Se Pare Poster", type: 'image' },
-  { id: 4, src: '/photos/umaj.jpg', alt: "Umaj Poster", type: 'image' },
-  { id: 5, src: '/photos/rango1.jpg', alt: "Rango Se Pare Action", type: 'image' },
-  { id: 6, src: '/photos/Umaj1.jpg', alt: "Umaj Action", type: 'image' },
+  { id: 3, src: '/photos/reel2.mp4', alt: "Natyabandh Reel 2", type: 'video' },
+  { id: 4, src: '/photos/rango_se_pare1.jpg', alt: "Rango Se Pare Poster", type: 'image' },
+  { id: 5, src: '/photos/umaj.jpg', alt: "Umaj Poster", type: 'image' },
+  { id: 6, src: '/photos/rango1.jpg', alt: "Rango Se Pare Action", type: 'image' },
+  { id: 7, src: '/photos/Umaj1.jpg', alt: "Umaj Action", type: 'image' },
 ];
+
 
 export default function LegacySection() {
   const [currentSlide, setCurrentSlide] = useState(0);
