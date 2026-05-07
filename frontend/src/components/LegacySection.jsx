@@ -85,14 +85,26 @@ export default function LegacySection() {
     };
   }, [currentSlide]);
 
-  // Restart video when returning to the slide
+  // Restart video when returning to the slide and pause others
   useEffect(() => {
-    if (galleryItems[currentSlide].type === 'video' && videoRef.current) {
-      videoRef.current.currentTime = 0;
-      videoRef.current.play().catch(() => {
-        // Fallback for browser autoplay policies
-      });
-    }
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    const allVideos = container.querySelectorAll('video');
+    const currentItem = galleryItems[currentSlide];
+
+    allVideos.forEach(v => {
+      // Use getAttribute('src') to get the relative path as defined in galleryItems
+      const vSrc = v.getAttribute('src');
+      if (currentItem.type === 'video' && vSrc === currentItem.src) {
+        v.currentTime = 0;
+        v.play().catch(() => {
+          // Fallback for browser autoplay policies
+        });
+      } else {
+        v.pause();
+      }
+    });
   }, [currentSlide]);
 
   const handleVideoTimeUpdate = () => {
@@ -162,7 +174,6 @@ export default function LegacySection() {
                   <video 
                     ref={currentSlide === idx ? videoRef : null}
                     src={item.src}
-                    autoPlay
                     muted={isMuted}
                     playsInline
                     onTimeUpdate={currentSlide === idx ? handleVideoTimeUpdate : null}
