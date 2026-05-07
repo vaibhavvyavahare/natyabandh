@@ -292,11 +292,11 @@ export default function LegacySection() {
                       </div>
                     ))}
                     <div className="w-6 h-6 rounded-full border-2 border-black bg-emerald-500/20 flex items-center justify-center text-[8px] font-bold text-emerald-500 backdrop-blur-sm">
-                      +12
+                      +50
                     </div>
                   </div>
                   <p className="text-[10px] text-stone-400 font-medium italic">
-                    <span className="text-emerald-500 font-bold">12 people</span> booked in the last 24 hours
+                    <span className="text-emerald-500 font-bold">50+ people</span> booked in the last 24 hours
                   </p>
                 </div>
 
