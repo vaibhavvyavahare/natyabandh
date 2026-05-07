@@ -35,7 +35,7 @@ export async function POST(req) {
       const customerName = payment.notes?.name || "Art Lover"; // Ensure you pass 'name' in Razorpay Notes
 
       // 3. SEND EMAILS (Customer and Admin Notification)
-      await Promise.all([
+      const emailPromises = [
         // Email to Customer
         resend.emails.send({
           from: 'Natyabandh <tickets@natyabandh.me>',
@@ -61,12 +61,20 @@ export async function POST(req) {
               <p style="font-size: 12px; color: #666; text-align: center;">Artists among Engineers | Humans among Robots</p>
             </div>
           `,
-        }),
+        })
+      ];
 
-        // Email to Admin
+      // ONLY send to admin notification if it's NOT the customer (prevents double emails during your own tests)
+      // and hardcoded to your gmail only.
+      const adminEmail = 'natyabandh.rangbhumi@gmail.com';
+      
+      console.log(`Sending ticket to: ${customerEmail}`);
+      console.log(`Sending admin notification to: ${adminEmail}`);
+
+      emailPromises.push(
         resend.emails.send({
           from: 'Natyabandh System <system@natyabandh.me>',
-          to: 'natyabandh.rangbhumi@gmail.com',
+          to: adminEmail,
           subject: `New Ticket Booking: ${customerName}`,
           html: `
             <div style="font-family: sans-serif; padding: 20px;">
@@ -80,7 +88,10 @@ export async function POST(req) {
             </div>
           `,
         })
-      ]);
+      );
+
+      await Promise.all(emailPromises);
+
 
     }
 
