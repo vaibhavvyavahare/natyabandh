@@ -38,12 +38,12 @@ export default function Navbar() {
           <div className="flex items-center min-w-[100px] justify-end">
             <div 
               className="razorpay-embed-btn" 
-              data-url="https://pages.razorpay.com/pl_Sm4lewjojhLZpg/view" 
+              data-url="https://rzp.io/rzp/R2V8xgW" 
               data-text="Book Now" 
               data-color="#752DE1" 
               data-size="small"
             >
-              <a href="https://pages.razorpay.com/pl_Sm4lewjojhLZpg/view" className="text-xs bg-[#752DE1] text-white px-4 py-2 rounded-full font-bold uppercase shadow-sm hover:shadow-md transition-shadow">Book Now</a>
+              <a href="https://rzp.io/rzp/R2V8xgW" className="text-xs bg-[#752DE1] text-white px-4 py-2 rounded-full font-bold uppercase shadow-sm hover:shadow-md transition-shadow">Book Now</a>
             </div>
           </div>
 

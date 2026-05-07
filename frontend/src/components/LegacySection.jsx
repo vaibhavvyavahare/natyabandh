@@ -245,7 +245,7 @@ export default function LegacySection() {
               {/* Razorpay Button */}
               <div className="pt-4">
                 <a 
-                  href="https://pages.razorpay.com/pl_Sm4lewjojhLZpg/view"
+                  href="https://rzp.io/rzp/R2V8xgW"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full bg-[#752DE1] hover:bg-[#6421c9] text-white font-bold py-4 px-6 rounded-xl flex items-center justify-between transition-all shadow-lg shadow-purple-500/20 active:scale-[0.98] group/btn"
