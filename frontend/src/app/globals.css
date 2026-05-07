@@ -26,3 +26,54 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #444444;
 }
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.05); }
+}
+
+@keyframes glow-dynamic {
+  0% { box-shadow: 0 0 5px rgba(16, 185, 129, 0.2), 0 0 10px rgba(16, 185, 129, 0.1); }
+  50% { box-shadow: 0 0 20px rgba(16, 185, 129, 0.4), 0 0 30px rgba(16, 185, 129, 0.2); }
+  100% { box-shadow: 0 0 5px rgba(16, 185, 129, 0.2), 0 0 10px rgba(16, 185, 129, 0.1); }
+}
+
+@keyframes border-flow {
+  0% { border-color: rgba(16, 185, 129, 0.2); }
+  50% { border-color: rgba(16, 185, 129, 0.8); }
+  100% { border-color: rgba(16, 185, 129, 0.2); }
+}
+
+@keyframes live-dot {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 2s infinite ease-in-out;
+}
+
+.animate-glow-dynamic {
+  animation: glow-dynamic 3s infinite ease-in-out;
+}
+
+.animate-border-flow {
+  animation: border-flow 4s infinite ease-in-out;
+}
+
+.animate-live-dot {
+  position: relative;
+}
+
+.animate-live-dot::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  background: currentColor;
+  animation: live-dot 1.5s infinite ease-out;
+}
+

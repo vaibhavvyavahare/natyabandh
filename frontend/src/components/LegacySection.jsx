@@ -208,47 +208,66 @@ export default function LegacySection() {
         
         {/* Book Ticket Now Card Section */}
         <div className="pt-8 flex justify-center">
-          <div className="max-w-md w-full bg-gradient-to-br from-stone-900 to-black border border-white/10 rounded-3xl p-6 md:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.5)] relative overflow-hidden group">
+          <div className="max-w-md w-full bg-gradient-to-br from-stone-900 to-black border border-emerald-500/20 rounded-3xl p-6 md:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.5)] relative overflow-hidden group animate-border-flow animate-glow-dynamic">
             {/* Decorative background glow */}
-            <div className="absolute -top-24 -right-24 w-48 h-48 bg-emerald-600/10 rounded-full blur-[80px] group-hover:bg-emerald-600/20 transition-all duration-700"></div>
+            <div className="absolute -top-24 -right-24 w-48 h-48 bg-emerald-600/10 rounded-full blur-[80px] group-hover:bg-emerald-600/20 transition-all duration-700 animate-pulse-soft"></div>
             
             <div className="relative space-y-6 text-left">
               <div className="flex justify-between items-start">
                 <div>
-                  <span className="inline-block px-3 py-1 bg-emerald-600/20 text-emerald-500 text-[10px] font-bold tracking-widest uppercase rounded-full border border-emerald-500/20 mb-3">
-                    Live Booking
-                  </span>
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="relative flex h-2 w-2">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                    </span>
+                    <span className="inline-block px-3 py-1 bg-emerald-600/20 text-emerald-500 text-[10px] font-bold tracking-widest uppercase rounded-full border border-emerald-500/20">
+                      Live Booking Open
+                    </span>
+                  </div>
                   <h3 className="text-2xl md:text-3xl font-bold text-white font-[family-name:var(--font-yatra-one)]">
                     तिकीट बुकिंग
                   </h3>
                   <p className="text-stone-400 text-sm mt-1">
-                    Book your tickets for upcoming performances.
+                    Secure your seats for the upcoming masterpiece.
                   </p>
+                </div>
+                <div className="bg-stone-800/50 backdrop-blur-md p-2 rounded-2xl border border-white/5 text-center min-w-[70px]">
+                  <span className="block text-xs text-stone-500 uppercase tracking-tighter">Fast Filling</span>
+                  <span className="text-emerald-500 font-bold">85%</span>
                 </div>
               </div>
 
-              <div className="space-y-3 pt-2">
+              <div className="space-y-4 pt-2">
                 <div className="flex items-center gap-3 text-stone-300">
-                  <div className="w-8 h-8 rounded-lg bg-emerald-600/10 flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-emerald-500"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="3" x2="21" y1="10" y2="10"/><line x1="7" x2="7" y1="2" y2="6"/><line x1="17" x2="17" y1="2" y2="6"/></svg>
+                  <div className="w-10 h-10 rounded-xl bg-emerald-600/10 flex items-center justify-center border border-emerald-500/10">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-emerald-500"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="3" x2="21" y1="10" y2="10"/><line x1="7" x2="7" y1="2" y2="6"/><line x1="17" x2="17" y1="2" y2="6"/></svg>
                   </div>
-                  <span className="text-sm">प्रयोग: <span className="text-white font-semibold">नाट्यबंध</span></span>
+                  <div className="flex flex-col">
+                    <span className="text-[10px] text-stone-500 uppercase tracking-widest">Performance</span>
+                    <span className="text-sm text-white font-semibold">नाट्यबंध (Natyabandh)</span>
+                  </div>
                 </div>
                 <div className="flex items-center gap-3 text-stone-300">
-                  <div className="w-8 h-8 rounded-lg bg-emerald-600/10 flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-emerald-500"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                  <div className="w-10 h-10 rounded-xl bg-emerald-600/10 flex items-center justify-center border border-emerald-500/10">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-emerald-500"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
                   </div>
-                  <span className="text-sm">ठिकाण: <span className="text-white font-semibold text-xs sm:text-sm">रामकृष्ण मोरे नाट्यगृह</span></span>
+                  <div className="flex flex-col">
+                    <span className="text-[10px] text-stone-500 uppercase tracking-widest">Venue</span>
+                    <span className="text-sm text-white font-semibold">रामकृष्ण मोरे नाट्यगृह, चिंचवड</span>
+                  </div>
                 </div>
               </div>
 
               {/* Razorpay Button */}
-              <div className="pt-4">
+              <div className="pt-4 relative">
+                {/* Live glow effect behind button */}
+                <div className="absolute inset-0 bg-purple-600/20 blur-2xl rounded-xl -z-10 animate-pulse"></div>
+                
                 <a 
                   href="https://pages.razorpay.com/pl_Sm4lewjojhLZpg/view"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full bg-[#752DE1] hover:bg-[#6421c9] text-white font-bold py-4 px-6 rounded-xl flex items-center justify-between transition-all shadow-lg shadow-purple-500/20 active:scale-[0.98] group/btn"
+                  className="w-full bg-gradient-to-r from-[#752DE1] to-[#9333ea] hover:from-[#6421c9] hover:to-[#7b29d6] text-white font-bold py-4 px-6 rounded-xl flex items-center justify-between transition-all shadow-[0_0_20px_rgba(117,45,225,0.4)] hover:shadow-[0_0_30px_rgba(117,45,225,0.6)] active:scale-[0.98] group/btn"
                 >
                   <div className="flex items-center gap-3">
                     <div className="bg-white/20 p-1.5 rounded-lg group-hover/btn:bg-white/30 transition-colors">
@@ -259,17 +278,36 @@ export default function LegacySection() {
                         <path d="M12 12L18 9" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
                     </div>
-                    <span className="tracking-wide">Book Now (Razorpay)</span>
+                    <span className="tracking-wide">Book Your Experience</span>
                   </div>
                   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="group-hover/btn:translate-x-1 transition-transform"><path d="m9 18 6-6-6-6"/></svg>
                 </a>
+
+                {/* Real-time indicator */}
+                <div className="mt-6 flex items-center justify-center gap-2">
+                  <div className="flex -space-x-2">
+                    {[1, 2, 3].map((i) => (
+                      <div key={i} className="w-6 h-6 rounded-full border-2 border-black bg-stone-800 flex items-center justify-center overflow-hidden">
+                        <div className="w-full h-full bg-gradient-to-br from-stone-600 to-stone-400"></div>
+                      </div>
+                    ))}
+                    <div className="w-6 h-6 rounded-full border-2 border-black bg-emerald-500/20 flex items-center justify-center text-[8px] font-bold text-emerald-500 backdrop-blur-sm">
+                      +12
+                    </div>
+                  </div>
+                  <p className="text-[10px] text-stone-400 font-medium italic">
+                    <span className="text-emerald-500 font-bold">12 people</span> booked in the last 24 hours
+                  </p>
+                </div>
+
                 <div className="mt-4 flex items-center justify-center gap-4 opacity-50 grayscale hover:opacity-100 hover:grayscale-0 transition-all">
-                   <p className="text-[9px] uppercase tracking-[0.2em] text-stone-400 font-bold">Secure Payment Gateway</p>
+                   <p className="text-[9px] uppercase tracking-[0.2em] text-stone-400 font-bold">Secure Payment via Razorpay</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
+
       </div>
 
       {/* Achievement Section */}
@@ -285,8 +323,9 @@ export default function LegacySection() {
           <div className="flex overflow-x-auto snap-x snap-mandatory scrollbar-none no-scrollbar touch-auto gap-6 px-4 sm:px-0 pb-12 overflow-y-hidden">
             
             {/* 2025 Marker */}
-            <div className="flex-shrink-0 flex items-center justify-center w-24 snap-start">
-              <span className="text-6xl font-black text-red-600/10 font-mono -rotate-90">2025</span>
+            <div className="flex-shrink-0 flex items-center justify-center w-24 snap-start relative">
+              <div className="absolute inset-0 bg-red-600/5 blur-2xl rounded-full animate-pulse-soft"></div>
+              <span className="text-6xl font-black text-red-600/20 font-mono -rotate-90 drop-shadow-[0_0_10px_rgba(220,38,38,0.3)]">2025</span>
             </div>
 
             {/* 1. Prakash Inamdar 2025 */}
