@@ -34,32 +34,54 @@ export async function POST(req) {
       const customerEmail = payment.email;
       const customerName = payment.notes?.name || "Art Lover"; // Ensure you pass 'name' in Razorpay Notes
 
-      // 3. SEND ARTISTIC EMAIL
-      await resend.emails.send({
-        from: 'Natyabandh <tickets@natyabandh.me>',
-        to: customerEmail,
-        reply_to: 'natyabandh.rangbhumi@gmail.com',
-        subject: 'तुमची तिकीटं निश्चित झाली आहेत! 🎭 - Natyabandh 2026',
-        html: `
-          <div style="font-family: 'Helvetica', sans-serif; max-width: 600px; margin: auto; border: 1px solid #eee; padding: 20px; border-radius: 10px;">
-            <div style="background-color: #4A0404; color: white; padding: 15px; text-align: center; border-radius: 5px;">
-              <h1>नाट्यबंध २०२६</h1>
+      // 3. SEND EMAILS (Customer and Admin Notification)
+      await Promise.all([
+        // Email to Customer
+        resend.emails.send({
+          from: 'Natyabandh <tickets@natyabandh.me>',
+          to: customerEmail,
+          reply_to: 'natyabandh.rangbhumi@gmail.com',
+          subject: 'तुमची तिकीटं निश्चित झाली आहेत! 🎭 - Natyabandh 2026',
+          html: `
+            <div style="font-family: 'Helvetica', sans-serif; max-width: 600px; margin: auto; border: 1px solid #eee; padding: 20px; border-radius: 10px;">
+              <div style="background-color: #4A0404; color: white; padding: 15px; text-align: center; border-radius: 5px;">
+                <h1>नाट्यबंध २०२६</h1>
+              </div>
+              <p>नमस्कार <strong>${customerName}</strong>,</p>
+              <p>'उमज' आणि 'रंगों से परे' नाटकासाठी तुमचे बुकिंग यशस्वी झाले आहे.</p>
+              <div style="background-color: #f9f9f9; padding: 15px; border-left: 5px solid #D4AF37; margin: 20px 0;">
+                <p>📍 <strong>स्थळ:</strong> रामकृष्ण मोरे नाट्यगृह, चिंचवर्ड</p>
+                <p>📅 <strong>दिनांक:</strong> १२ मे, २०२६</p>
+                <p>⏰ <strong>वेळ:</strong> सायं. ५:३० वाजता</p>
+                <p>💳 <strong>Payment ID:</strong> ${payment.id}</p>
+              </div>
+              <p>प्रवेशासाठी ही ईमेल दाखवणे आवश्यक आहे.</p>
+              <p>भेटूया लवकर!</p>
+              <hr />
+              <p style="font-size: 12px; color: #666; text-align: center;">Artists among Engineers | Humans among Robots</p>
             </div>
-            <p>नमस्कार <strong>${customerName}</strong>,</p>
-            <p>'उमज' आणि 'रंगों से परे' नाटकासाठी तुमचे बुकिंग यशस्वी झाले आहे.</p>
-            <div style="background-color: #f9f9f9; padding: 15px; border-left: 5px solid #D4AF37; margin: 20px 0;">
-              <p>📍 <strong>स्थळ:</strong> रामकृष्ण मोरे नाट्यगृह, चिंचवर्ड</p>
-              <p>📅 <strong>दिनांक:</strong> १२ मे, २०२६</p>
-              <p>⏰ <strong>वेळ:</strong> सायं. ५:३० वाजता</p>
-              <p>💳 <strong>Payment ID:</strong> ${payment.id}</p>
+          `,
+        }),
+
+        // Email to Admin
+        resend.emails.send({
+          from: 'Natyabandh System <system@natyabandh.me>',
+          to: 'natyabandh.rangbhumi@gmail.com',
+          subject: `New Ticket Booking: ${customerName}`,
+          html: `
+            <div style="font-family: sans-serif; padding: 20px;">
+              <h2>New Booking Received! 🎭</h2>
+              <p><strong>Customer Name:</strong> ${customerName}</p>
+              <p><strong>Customer Email:</strong> ${customerEmail}</p>
+              <p><strong>Payment ID:</strong> ${payment.id}</p>
+              <p><strong>Amount:</strong> ₹${payment.amount / 100}</p>
+              <hr />
+              <p>This is an automated notification from your Razorpay Webhook.</p>
             </div>
-            <p>प्रवेशासाठी ही ईमेल दाखवणे आवश्यक आहे.</p>
-            <p>भेटूया लवकर!</p>
-            <hr />
-            <p style="font-size: 12px; color: #666; text-align: center;">Artists among Engineers | Humans among Robots</p>
-          </div>
-        `,
-      });
+          `,
+        })
+      ]);
+
     }
 
     return NextResponse.json({ received: true }, { status: 200 });
