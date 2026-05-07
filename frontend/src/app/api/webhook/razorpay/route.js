@@ -151,6 +151,26 @@ export async function POST(req) {
         })
       );
 
+      // 4. SYNC TO GOOGLE SHEETS (Optional but recommended)
+      // Replace 'YOUR_GOOGLE_SCRIPT_URL' with the URL from Step 2 below
+      const GOOGLE_SHEET_WEBHOOK_URL = process.env.GOOGLE_SHEET_WEBHOOK_URL;
+      if (GOOGLE_SHEET_WEBHOOK_URL) {
+        emailPromises.push(
+          fetch(GOOGLE_SHEET_WEBHOOK_URL, {
+            method: 'POST',
+            body: JSON.stringify({
+              timestamp: new Date().toLocaleString(),
+              name: customerName,
+              email: customerEmail,
+              phone: customerPhone,
+              paymentId: payment.id,
+              amount: payment.amount / 100,
+              status: 'Paid'
+            })
+          }).catch(err => console.error("Google Sheet Sync Error:", err))
+        );
+      }
+
       await Promise.all(emailPromises);
 
 
