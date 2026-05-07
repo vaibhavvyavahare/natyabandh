@@ -34,47 +34,33 @@ export default function Footer() {
     setStatus({ type: '', message: '' });
 
     try {
-      console.log("Sending data to Supabase...");
-      const { error } = await supabase
-        .from('UserTable')
-        .insert([
-          { 
-            Name: formData.name, 
-            Email: formData.email, 
-            Msg: formData.message 
-          }
-        ]);
+      console.log("Sending data to API...");
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        }),
+      });
 
-      if (error) {
-        console.error('Supabase Error:', error);
-        setStatus({ type: 'error', message: `त्रुटी (Error): ${error.message}` });
-      } else {
-        // Call the Edge Function manually to ensure the email gets sent 
-        // even if the Database Webhook trigger is not configured.
-        try {
-          console.log("Invoking edge function to send email...");
-          await supabase.functions.invoke('forward-message', {
-            body: { 
-              record: { 
-                Name: formData.name, 
-                Email: formData.email, 
-                Msg: formData.message 
-              } 
-            }
-          });
-        } catch (fnErr) {
-          console.error("Edge function error:", fnErr);
-        }
+      const result = await response.json();
 
-        console.log("Success! Message sent.");
-        setStatus({ type: 'success', message: 'तुमचा संदेश यशस्वीरीत्या पाठवला आहे! (Message sent!)' });
-        setFormData({ name: '', email: '', message: '' });
-        
-        setTimeout(() => setStatus({ type: '', message: '' }), 5000);
+      if (!response.ok) {
+        throw new Error(result.error || 'Something went wrong');
       }
+
+      console.log("Success! Message sent.", result);
+      setStatus({ type: 'success', message: 'तुमचा संदेश यशस्वीरीत्या पाठवला आहे! (Message sent!)' });
+      setFormData({ name: '', email: '', message: '' });
+      
+      setTimeout(() => setStatus({ type: '', message: '' }), 5000);
     } catch (error) {
-      console.error('Connection Error:', error);
-      setStatus({ type: 'error', message: 'काहीतरी चूक झाली. (Connection error)' });
+      console.error('Submission Error:', error);
+      setStatus({ type: 'error', message: `त्रुटी (Error): ${error.message}` });
     } finally {
       setIsSending(false);
     }
